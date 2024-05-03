@@ -13,7 +13,7 @@ export interface ClienteVendedor{
   empresa:  string;
   email:  string;
 }
-interface ObtenerClientesVendedor{
+export interface ObtenerClientesVendedor{
   obtenerClientesVendedor: ClienteVendedor[];
 }
 
