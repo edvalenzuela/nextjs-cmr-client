@@ -13,7 +13,7 @@ export interface Productos{
   existencia: string;
 }
 
-interface ObtenerProductos{
+export interface ObtenerProductos{
   obtenerProductos: Productos[];
 }
 

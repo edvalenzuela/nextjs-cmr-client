@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Select, { MultiValue } from 'react-select'
 import PedidoContext from '@/context/PedidoContext';
 

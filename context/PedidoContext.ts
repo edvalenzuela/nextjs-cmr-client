@@ -1,15 +1,11 @@
 import { createContext } from "react";
 
-export interface Cliente{
-  id: number;
-  nombre: string;
-}
-
 export interface InitialStateProps{
-  cliente: Object;
-  productos: Array<any>;
+  cliente: {};
+  productos: [];
   total: number;
-  agregarCliente: (cliente:Cliente) => void;
+  agregarCliente: (cliente:any) => void;
+  agregarProducto: (producto:any) => void;
 }
 
 const PedidoContext = createContext<InitialStateProps>({} as InitialStateProps);
