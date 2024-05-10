@@ -32,7 +32,7 @@ const AsignarProductos = () => {
         className='mt-3'
         options={data?.obtenerProductos}
         isMulti
-        onChange={(op) => seleccionarProducto(op)}
+        onChange={seleccionarProducto}
         getOptionValue={op => op.id}
         getOptionLabel={op => `${op.nombre} - ${op.existencia} Disponibles`}
         placeholder='Busque o seleccione el producto'
