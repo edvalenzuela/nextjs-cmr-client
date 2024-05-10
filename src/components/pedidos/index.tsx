@@ -1,0 +1,5 @@
+export { default as AsignarCliente } from './AsignarCliente'
+export { default as AsignarProductos } from './AsignarProductos'
+export { default as ProductosResumen } from './ProductosResumen' 
+export { default as ResumenPedido } from './ResumenPedido' 
+export { default as Total } from './Total'
