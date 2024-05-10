@@ -2,14 +2,17 @@ import { useReducer } from "react";
 import PedidoContext, { InitialStateProps } from "./PedidoContext";
 
 import PedidoReducer from "./PedidoReducer";
-import { SELECCIONAR_CLIENTE, SELECCIONAR_PRODUCTO, CANTIDAD_PRODUCTOS } from '../types';
+import { SELECCIONAR_CLIENTE, SELECCIONAR_PRODUCTO, CANTIDAD_PRODUCTOS, ACTUALIZAR_TOTAL } from '../types';
+import { Productos } from "@/pages/productos";
 
 const initialState:InitialStateProps = {
   cliente: {},
   productos: [],
   total: 0,
   agregarCliente: (cliente:any) => {},
-  agregarProducto: (producto:any) => {}
+  agregarProducto: (producto:any) => {},
+  actualizarTotal : () => {},
+  cantidadProductos : (nuevoProducto:any) => {}
 }
 
 const PedidoState = ({children}: { children: React.ReactNode }) => {
@@ -25,10 +28,36 @@ const PedidoState = ({children}: { children: React.ReactNode }) => {
     })
   }
 
-  const agregarProducto = (producto:any) => {
+  const agregarProducto = (productosSeleccionados:any) => {
+    
+    let nuevoState;
+    if(state.productos.length > 0){
+      //tomar del segundo arreglo, una copia para asignarlo al primero
+      nuevoState = productosSeleccionados.map((producto:Productos) => {
+        const nuevoObjeto = state.productos.find((productoState:Productos) => productoState.id === producto.id)
+        return {...producto, ...nuevoObjeto};
+      })
+    }else{
+      nuevoState = productosSeleccionados;
+    }
+
     dispatch({
       type: SELECCIONAR_PRODUCTO,
-      payload: producto
+      payload: nuevoState
+    })
+  }
+
+  //modifica las cantidades de los productos
+  const cantidadProductos = (nuevoProducto:Productos) => {
+    dispatch({
+      type: CANTIDAD_PRODUCTOS,
+      payload: nuevoProducto
+    })
+  }
+
+  const actualizarTotal = () => {
+    dispatch({
+      type: ACTUALIZAR_TOTAL
     })
   }
 
@@ -37,7 +66,9 @@ const PedidoState = ({children}: { children: React.ReactNode }) => {
       value={{
         ...state,
         agregarCliente,
-        agregarProducto
+        agregarProducto,
+        actualizarTotal,
+        cantidadProductos,
       }}
     >
       {children}
