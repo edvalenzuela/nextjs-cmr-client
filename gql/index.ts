@@ -6,3 +6,5 @@ export * from './productos/query'
 
 export * from './usuarios/mutation'
 export * from './usuarios/query'
+
+export * from './pedidos/mutation'

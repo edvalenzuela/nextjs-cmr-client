@@ -6,6 +6,7 @@ import Layout from '@/src/components/Layout'
 import Producto from '@/src/components/Producto';
 
 export interface Productos{
+  __typename?: string;
   id:string;
   nombre:string;
   precio: string;
