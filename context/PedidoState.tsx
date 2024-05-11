@@ -3,11 +3,13 @@ import PedidoContext, { InitialStateProps } from "./PedidoContext";
 
 import PedidoReducer from "./PedidoReducer";
 import { SELECCIONAR_CLIENTE, SELECCIONAR_PRODUCTO, CANTIDAD_PRODUCTOS, ACTUALIZAR_TOTAL } from '../types';
+
+import { ClienteVendedor } from "@/pages";
 import { Productos } from "@/pages/productos";
 
 const initialState:InitialStateProps = {
-  cliente: {},
-  productos: [],
+  cliente: {} as ClienteVendedor,
+  productos: [] as Productos[],
   total: 0,
   agregarCliente: (cliente:any) => {},
   agregarProducto: (producto:any) => {},
@@ -21,7 +23,7 @@ const PedidoState = ({children}: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(PedidoReducer, initialState);
 
   //Modifica el cliente
-  const agregarCliente = (cliente:any) => {
+  const agregarCliente = (cliente:ClienteVendedor) => {
     dispatch({
       type: SELECCIONAR_CLIENTE,
       payload: cliente

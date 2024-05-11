@@ -1,8 +1,9 @@
 import { createContext } from "react";
+import { ClienteVendedor } from "@/pages";
 import { Productos } from "@/pages/productos";
 
 export interface InitialStateProps{
-  cliente: {};
+  cliente: ClienteVendedor;
   productos: Productos[];
   total: number;
   agregarCliente: (cliente:any) => void;
