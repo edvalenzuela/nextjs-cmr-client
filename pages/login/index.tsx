@@ -57,9 +57,12 @@ const Login = () => {
         console.log(data)
         setMensaje(`Autenticando...`);
 
-        const token = data?.autenticarUsuario.token;
-        localStorage.setItem('token', token!);
+        setTimeout(() => {
+          const token = data?.autenticarUsuario.token;
+          localStorage.setItem('token', token!);
+        }, 1000);
 
+        //Redireccionar hacia clientes
         setTimeout(() => {
           setMensaje(null);
           router.push('/')

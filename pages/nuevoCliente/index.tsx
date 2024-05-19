@@ -11,6 +11,7 @@ import ShowMessage from "@/src/components/ShowMessage";
 
 export interface InitialValues{
   __typename?: string;
+  id?: string;
   nombre: string;
   apellido: string;
   empresa: string;

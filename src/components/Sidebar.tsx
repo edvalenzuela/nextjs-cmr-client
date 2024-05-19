@@ -26,6 +26,14 @@ const Sidebar = () => {
     {
       href: '/productos',
       name: 'Productos'
+    },
+    {
+      href: '/mejoresvendedores',
+      name: 'Mejores vendedores'
+    },
+    {
+      href: '/mejoresclientes',
+      name: 'Mejores clientes'
     }
   ]
 

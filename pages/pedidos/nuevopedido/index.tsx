@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client"
 
 import PedidoContext from "@/context/PedidoContext"
 
-import { NUEVO_PEDIDO } from "@/gql"
+import { NUEVO_PEDIDO, OBTENER_PEDIDOS } from "@/gql"
 
 import { Layout } from "@/src/components"
 import { AsignarCliente, AsignarProductos, ResumenPedido, Total } from '@/src/components/pedidos'
@@ -17,7 +17,19 @@ const NuevoPedido = () => {
   const router = useRouter();
 
   //mutation para crear un nuevo pedido
-  const [ nuevoPedido ] = useMutation(NUEVO_PEDIDO);
+  const [ nuevoPedido ] = useMutation(NUEVO_PEDIDO, {
+    update(cache:any, { data: { nuevoPedido }}){
+      const { obtenerPedidosVendedor } = cache.readQuery({
+        query: OBTENER_PEDIDOS
+      });
+      cache.writeQuery({
+        query: OBTENER_PEDIDOS,
+        data: {
+          obtenerPedidosVendedor: [...obtenerPedidosVendedor, nuevoPedido]
+        }
+      })
+    }
+  });
 
   const validarPedido = ():string => {
     if (!productos.every(item => item?.cantidad! > 0) || total === 0 || Object.keys(cliente).length === 0) {
