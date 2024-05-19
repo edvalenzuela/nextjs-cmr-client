@@ -8,3 +8,6 @@ export * from './usuarios/mutation'
 export * from './usuarios/query'
 
 export * from './pedidos/mutation'
+export * from './pedidos/query'
+
+export * from './mejoresVendedoresClientes/query'
